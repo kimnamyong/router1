@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import styled from 'styled-components'
+import Header from './Header'
+import Page from './Page'
+import Footer from './Footer'
+
+const Div = styled.div`
+  margin: 20px;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Div>
+        <Header />
+        <Routes>
+        <Route path="/" element={<Page title='Home' body='첫 화면입니다.' />} />
+          <Route path="/notice" element={<Page title="Notice" body='공지 화면입니다.' />} />
+          <Route path="/about" element={<Page title="About" body='소개 화면입니다.' />} />
+
+        </Routes>
+        <Footer />
+      </Div>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
